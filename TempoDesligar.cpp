@@ -9,14 +9,27 @@ int main(){
 	
 	printf("Insira o tempo para desligar o PC (Em horas)\n>> ");
 	scanf("%d", &hour);
+
+	time = hour;
 	
 	system("cls");
 	
-	printf("Selecione uma das opcoes abaixo:\n\na - %d horas\nb - %d minutos\nc - %d segundos\n\n>> ", hour, hour, hour);
-	scanf("%c", &select);
+	printf("Selecione uma das opcoes abaixo:\n\n1.Horas\n2.Minutos\n3.Segundos\n\n>> ");
+	scanf("%d", &select);
+
+
+	// Convertendo a hora para segundos
+	switch(select){
+		// Em Horas
+		case 1:
+			time = hour * 60 * 60;
+			break;
+		// Em minutos
+		case 2:
+			time = hour * 60;
+			break;
+	}
 	
-	// Convertendo horas para segundo
-	time = hour * 60 * 60;
 	
 	// Convertendo o tempo em string
 	sprintf(string, "%d", time);
@@ -24,7 +37,7 @@ int main(){
 	// Concatenando comando com o tempo
 	strcat(command, string);
 				
-	//system(command);
+	system(command);
 		
 	return 0;
 }
