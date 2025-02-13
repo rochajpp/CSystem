@@ -7,7 +7,7 @@ int main(){
 	char string[100];
 	char command[100] = "shutdown -s -t ";
 	
-	printf("Insira o tempo para desligar o PC (Em horas)\n>> ");
+	printf("Insira o tempo para desligar o PC\n>> ");
 	scanf("%d", &hour);
 
 	time = hour;
