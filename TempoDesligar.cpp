@@ -8,9 +8,9 @@ int main(){
 	char command[100] = "shutdown -s -t ";
 	
 	printf("Insira o tempo para desligar o PC\n>> ");
-	scanf("%d", &hour);
+	scanf("%d", &select);
 
-	time = hour;
+	time = select;
 	
 	system("cls");
 	
@@ -22,11 +22,11 @@ int main(){
 	switch(select){
 		// Em Horas
 		case 1:
-			time = hour * 60 * 60;
+			time = time * 60 * 60;
 			break;
 		// Em minutos
 		case 2:
-			time = hour * 60;
+			time = time * 60;
 			break;
 	}
 	
@@ -36,8 +36,12 @@ int main(){
 	
 	// Concatenando comando com o tempo
 	strcat(command, string);
-				
+		
+	// printf("%s\n", command);
+	// system("pause");
+
 	system(command);
 		
 	return 0;
 }
+
