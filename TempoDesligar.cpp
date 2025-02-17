@@ -4,20 +4,40 @@
 
 int main(){
 	int time, hour, select;
-	char string[100];
+	char string[100], timeName[100] = "segundos";
 	char command[100] = "shutdown -s -t ";
-	
-	printf("Insira o tempo para desligar o PC\n>> ");
+
+	printf("Selecione uma das opcoes abaixo:\n\n1.Horas\n2.Minutos\n3.Segundos\n4.Cancelar agendamento\n\n>> ");
 	scanf("%d", &select);
 
-	time = select;
+	switch(select){
+		// Em Horas
+		case 1:
+			strcpy(timeName, "horas");
+			break;
+
+		case 2:
+			strcpy(timeName, "minutos");
+			break;
+	}
+	
+	if(select == 4){
+		strcpy(command, "shutdown -a");
+		system(command);
+		return 0;
+	}
 	
 	system("cls");
+
+	if(select == 1){
+		printf("Insira quantas %s para desligar o PC\n>> ", timeName);
+	}else{
+		printf("Insira quantos %s para desligar o PC\n>> ", timeName);
+	}
+	scanf("%d", &time);
 	
-	printf("Selecione uma das opcoes abaixo:\n\n1.Horas\n2.Minutos\n3.Segundos\n\n>> ");
-	scanf("%d", &select);
-
-
+	
+	
 	// Convertendo a hora para segundos
 	switch(select){
 		// Em Horas
