@@ -5,13 +5,12 @@
 #include<locale.h>
 
 
-int menu(char options[5][100]){
+int menu(char options[5][100], int size, char title[100]){
 	int ch;
 	int select = 0;
-	int size = 5;
 
 	while(true){
-		printf("Selecione uma das opcoes a seguir:\n");
+		printf("%s:\n\n", title);
 		for(int i = 0; i < size; i++){
 			if(select == i){
 				printf("> %s\n", options[i]);
@@ -56,14 +55,33 @@ int menu(char options[5][100]){
 }
 
 int main(){
-	char options[5][100] = {"Horas", "Minutos", "Segundos", "Cancelar agendamento", "Fechar"};
-	
+	char options[3][100] = {"Agendar desligamento", "Cancelar agendamento", "Fechar"};
+	char title[100] = "Selcione uma das opcoes a seguir";
 	int time, hour, select;
 	char string[100], timeName[100] = "segundos";
 	char command[100] = "shutdown -s -t ";
 
+	select = menu(options, 3, title);
 
-	select = menu(options);
+	switch(select){
+		case 1:
+			strcpy(command, "shutdown -a");
+			system(command);
+			system("pause");
+			return 0;
+			break;
+		case 2:
+			return 0;
+			break;
+	}
+
+	char optionsTime[3][100] = {"Horas", "Minutos", "Segundos"};
+	
+	system("cls");
+
+	char titleType[100] = "Selecione uma das unidades de tempo";
+
+	select = menu(optionsTime, 3, titleType);
 
 	switch(select){
 		// Em Horas
@@ -74,20 +92,11 @@ int main(){
 		case 1:
 			strcpy(timeName, "minutos");
 			break;
-		case 3:
-			strcpy(command, "shutdown -a");
-			system(command);
-			system("pause");
-			return 0;
-			break;
-		case 4:
-			return 0;
-			break;
 	}
 	
 	system("cls");
 
-	if(select == 1){
+	if(select == 0){
 		printf("Insira quantas %s para desligar o PC\n>> ", timeName);
 	}else{
 		printf("Insira quantos %s para desligar o PC\n>> ", timeName);
